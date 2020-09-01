@@ -1,1 +1,150 @@
-<p>github-search works!</p>
+<div class="container">
+  <form class="m-auto jumbotron pt-lg-5 mt-lg-5" #gtform='ngForm' autocomplete="off">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="options">Type</label>
+          <select class="form-control" id="options" #criteria>
+            <option>Users</option>
+            <option>Repositories</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <label for='data'>Query</label>
+          <input id='data' type="search" class="form-control" #search required
+                 onfocus="this.value=''">
+        </div>
+      </div>
+    </div>
+
+    <div class="m-auto text-center form-group">
+      <button class="btn  btn-primary" (click)="performSearch( criteria.value,search.value)">
+        Search
+      </button>
+    </div>
+  </form>
+</div>
+<div class="loader text-center py-5 mt-5" *ngIf='loading'>
+  <p appLoadingColorChange class="h1">Loading...</p>
+</div>
+<div class="container-fluid p-5" *ngIf="!repodetail">
+  <div class="row" *ngIf="!repodata">
+    <div class="results p-3" *ngIf='gtusers'>
+      <h3 class="lead">{{gtusers?.length}} Users.</h3>
+      <hr>
+    </div>
+  </div>
+  <div class='row' *ngIf="!repodata">
+    <div class="col-md-3 pb-4" *ngFor="let gtUser of gtusers">
+      <div class="card">
+        <div class="card-image text-center">
+          <img class="img  rounded-circle" src="{{gtUser?.avatar_url}}" height="60px" alt="image">
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-12 p-3">
+            <div class="">
+              <div class="content">
+                <h4 class="text-center"><strong>{{gtUser?.login}}</strong></h4>
+              </div>
+              <hr>
+              <div class="card-action text-center ">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <button (click)="findRepos(gtUser?.repos_url)" class='btn  btn-sm btn-primary'>Repos</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <a href="{{gtUser?.html_url}}" class='btn btn-sm btn-success'>Github Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="repodata">
+    <div class="results p-3" *ngIf='gtrepos'>
+      <h3 class="lead">{{gtrepos?.length}} Repos found.</h3>
+    </div>
+  </div>
+  <div class='row' *ngIf="repodata">
+    <div class="col-md-3" *ngFor="let repo of gtrepos">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div class="lead">
+            <a target="_blank" href="{{repo?.html_url}}"><h4> {{repo?.name}}</h4></a>
+          </div>
+        </div>
+        <div class="card-body m-4">
+          <div class="text-info font-italic">
+            {{repo?.description}}
+          </div>
+        </div>
+        <div class="card-footer p-0 m-0">
+          <div class="row">
+            <div class="col-sm-12" *ngIf='repo.language'>
+              <div class="languageUsed "> Language:
+                <span class="font-italic">{{repo?.language}}</span>
+              </div>
+            </div>
+            <div class="col-sm-12">
+                <span class="text-center text-info font-italic">
+                  Created {{repo?.updated_at | date |countTimePassed}}
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-5 py-5" *ngIf="isConnected && repodetail">
+  <div class="minfo" *ngIf="gtuserdetails">
+    <h4 class="lead">{{gtuserdetails[0]?.owner.login}} repositories</h4>
+    <p>Returned {{gtuserdetails.length}} repositories</p>
+    <hr>
+  </div>
+  <div class="repositories m-5">
+    <div class="row">
+      <div class="col-md-6" *ngFor="let repo of gtuserdetails">
+        <div class="card mb-4">
+          <div class="mContent m-4">
+            <div class="lead">
+              {{repo?.name}}
+            </div>
+            <div>
+              {{repo?.full_name}}
+            </div>
+            <hr>
+            <div class="row infos">
+              <div class="col-md-3" *ngIf='repo?.language'>
+                {{repo?.language}}
+              </div>
+              <div class="col-md-4"> <span>updated:
+                  {{repo?.updated_at | date |countTimePassed}}</span>
+              </div>
+              <div class="col-md-3">
+                <div class="go">
+                  <a href="{{repo?.html_url}}"><span class="badge badge badge-warning float-right">find in
+                        github</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="container py-5 text-center  codes" *ngIf="!isConnected">
+  <div class="row py-5 mt-5">
+    <h1 appLoadingColorChange> Network Error!</h1>
+  </div>
+
+</div>
