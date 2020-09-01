@@ -1,26 +1,41 @@
-# AngularFinal
+# Angular Github APi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+Angular project that allows you to search for github Users. You can also search for repositories and view repos for a specific user.
 
-## Development server
+# Project Author
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[Lennox Omondi](https://linkedin.com/in/lenomosh)
 
-## Code scaffolding
+# Project Setup Instructions
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- CLone the repo.
+- `cd` to the directory and run `yarn` or   `npm install`
+- created a directory named environment inside the `src` folder and create two files: `environment.ts` and `environement.prod.ts`
+- Add the followinf code to your `enviromnent.ts`
+```
+export const environment = {
+  production: false,
+  apiKey: 'your git api Key here'
+};
+```
+- Add the following code to your `enviromnent.prod.ts`
+```
+export const environment = {
+  production: true,
+  apiKey: 'your git api key here'
 
-## Build
+};
+```
+<i>Click [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) to learn how to generate api Key</i>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- After all the packages have been installed, run `ng serve`. This will run the project on (http://localhost:4200/)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## License and Copyright information.
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+-  2020 © <a href="https://linkedin.com/in/lenomosh" target="_blank">Lennox Omondi</a>.
 
 ## Further help
 
