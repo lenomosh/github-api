@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimeElaspePipe } from './Pipes/time-elaspe.pipe';
 import { CountTimePassedPipe } from './Pipes/count-time-passed.pipe';
+import { LoadingColorChangeDirective } from './Directives/loading-color-change.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimeElaspePipe,
-    CountTimePassedPipe
+    CountTimePassedPipe,
+    LoadingColorChangeDirective
   ],
   imports: [
     BrowserModule,
