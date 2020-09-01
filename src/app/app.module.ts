@@ -10,6 +10,7 @@ import { GitProfileComponent } from './Components/git-profile/git-profile.compon
 import { GithubSearchComponent } from './Components/github-search/github-search.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
