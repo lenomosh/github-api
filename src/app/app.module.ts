@@ -9,6 +9,7 @@ import { LoadingColorChangeDirective } from './Directives/loading-color-change.d
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { GitProfileComponent } from './Components/git-profile/git-profile.component';
 import { GithubSearchComponent } from './Components/github-search/github-search.component';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GithubSearchComponent } from './Components/github-search/github-search.
     LoadingColorChangeDirective,
     NavbarComponent,
     GitProfileComponent,
-    GithubSearchComponent
+    GithubSearchComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
