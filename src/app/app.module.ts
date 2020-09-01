@@ -8,6 +8,7 @@ import { CountTimePassedPipe } from './Pipes/count-time-passed.pipe';
 import { LoadingColorChangeDirective } from './Directives/loading-color-change.directive';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { GitProfileComponent } from './Components/git-profile/git-profile.component';
+import { GithubSearchComponent } from './Components/github-search/github-search.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { GitProfileComponent } from './Components/git-profile/git-profile.compon
     CountTimePassedPipe,
     LoadingColorChangeDirective,
     NavbarComponent,
-    GitProfileComponent
+    GitProfileComponent,
+    GithubSearchComponent
   ],
   imports: [
     BrowserModule,
