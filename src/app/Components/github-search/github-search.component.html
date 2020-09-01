@@ -113,7 +113,7 @@
         <div class="card mb-4">
           <div class="mContent m-4">
             <div class="lead">
-              {{repo?.name}}
+              <h4><a href="{{repo.html_url}}">{{repo?.name}}</a></h4>
             </div>
             <div>
               {{repo?.full_name}}
@@ -125,12 +125,6 @@
               </div>
               <div class="col-md-4"> <span>updated:
                   {{repo?.updated_at | date |countTimePassed}}</span>
-              </div>
-              <div class="col-md-3">
-                <div class="go">
-                  <a href="{{repo?.html_url}}"><span class="badge badge badge-warning float-right">find in
-                        github</span></a>
-                </div>
               </div>
             </div>
           </div>
